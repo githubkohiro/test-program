@@ -1,63 +1,24 @@
 <!DOCTYPE html>
 <!--
-*	@file html5demo.html
-*	@author Csatári János
+*	@file index.html
+*	@author kohiro
 *
 *	Demonstrating the HTML5+Javascript capabilities of accessing the sensors of a mobile device.
-*	Tested on Mozilla Firefox for Android 24.0
+*	Tested on Google Chrome for Android 46.0
 -->
 <html>
 <head>
-	<title>demo HTML5 sensor demonstration</title>
+	<title>demo HTML5 sensor demo(Vibrate and BT)</title>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-type">
 	<meta name="viewport" content="width=device-width" />
 </head>
 <body>
-	<button id="geolocation" onclick="geolocation(false)" style="font-size:150%">Geolocation</button>
 	<button id="vibration" onclick="vibrate()" style="font-size:150%">Vibrate</button>
 	<button id="bt" onclick="btseach()" style="font-size:150%">BT search</button>
 	
 
 	<script type="text/javascript">
 		var x=document.getElementById("output");
-		var posEnabl = false, accEnabl = false, devicelightEnabl = false, lightlevelEnabl = false, deviceproximityEnabl = false, userproximityEnabl = false;
-		
-		var posHandler = function(event) {
-			x.innerHTML='Position <br/> Alpha: ' + event.alpha + ' <br/> Beta: ' + event.beta + ' <br/> Gamma: ' + 	event.gamma;
-		}
-		var accHandler = function(event) {
-			x.innerHTML='Acceleration <br/> X: ' + event.acceleration.x + '<br/> Y: ' + event.acceleration.y + '<br/> Z: ' + event.acceleration.z + '<br/>' +
-			'Acceleration including gravity <br/> X: ' + event.accelerationIncludingGravity.x + '<br/> Y: ' + event.accelerationIncludingGravity.y + '<br/> Z: ' + event.accelerationIncludingGravity.z + '<br/>' +
-			'Rotation rate <br/> Alfa: ' + event.rotationRate.alpha + '<br/> Béta: ' + event.rotationRate.beta + '<br/> Gamma: ' + event.rotationRate.gamma + '<br/>' + 
-			'Interval: ' + event.interval;
-		}
-		var devicelightHandler = function(event) {
-			x.innerHTML='Device light: ' + event.value;
-		}
-		var lightlevelHandler = function(event) {
-			x.innerHTML='Light level: ' + event.value;
-		}
-		var deviceproximityHandler = function(event) {
-			x.innerHTML='Device proximity value: ' + event.value + ', min: ' + event.min + ', max: ' + event.max;
-		}
-		var userproximityHandler = function(event) {
-			x.innerHTML='User proximity: ' + event.near;
-		}
-		
-		function geolocation(accuracy) {
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(success, fail, {enableHighAccuracy:accuracy});
-			} else {
-				fail();
-			}
-			function success(position) {
-				x.innerHTML='Latitude: ' + position.coords.latitude + 
-				', Longitude: ' + position.coords.longitude;
-			}
-			function fail() {
-				x.innerHTML='Error during reading location data!';
-			}
-		}
 		
 		function vibrate() {
 			navigator.vibrate(1000);
