@@ -15,6 +15,7 @@
 <body>
 	<button id="vibration" onclick="vibrate()" style="font-size:150%">Vibrate</button>
 	<button id="bt" onclick="btseach()" style="font-size:150%">BT search</button>
+	<button id="bt" onclick="bts2()" style="font-size:150%">BT search2</button>
 	
 
 	<!-- 書く場所を指定する。ここはhtml -->
@@ -40,6 +41,26 @@
 				x.innerHTML="Error during reading BT data!";
 				console.log("Error during reading BT data!");
 			}
+		}
+
+		function bts2(){		
+			if( navigator.bluetooth.requestDevice({filters: anyDevice()}) ){
+				x.innerHTML="bts2.finding devices";
+				console.log("bts2.finding devices");
+			} else {
+				fial2()
+			}
+
+			function anyDevice() {
+  				return Array.from('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+      			.map(c => ({namePrefix: c}))
+      			.concat({name: ''});
+      		}
+      		
+      		function fial2() {
+				x.innerHTML="bts2.Error during reading BT data!";
+				console.log("bts2.Error during reading BT data!");      		
+      		}
 		}
 		
 </script>
