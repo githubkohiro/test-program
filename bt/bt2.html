@@ -20,7 +20,10 @@
 //				services: ['heart_rate'],
 //			}]})
 			filters: anyDevice()})
- 			.then(device => device.gatt.connect())
+			//1個でもみつけて選択してもらえば下に進む。それ以外をNGとする。
+			.then( x.innerHTML="!!bts2.finding devices"; );
+			.then( console.log("!!bts2.finding devices") );
+// 			.then(device => device.gatt.connect())
 //			.then(server => server.getPrimaryService('heart_rate'))
 //			.then(service => {
 //				chosenHeartRateService = service;
