@@ -17,8 +17,8 @@
 		function bts3() {
 		navigator.bluetooth.requestDevice({
 			filters: [{
-				services: ['heart_rate'],
-//				services:  anyDevice()
+//				services: ['heart_rate'],
+				services:  anyDevice()
 			}]})
  			.then(device => device.gatt.connect())
 			.then(server => server.getPrimaryService('heart_rate'))
