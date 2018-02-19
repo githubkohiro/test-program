@@ -18,6 +18,7 @@
 		navigator.bluetooth.requestDevice({
 			filters: [{
 				services: ['heart_rate'],
+//				services:  anyDevice()
 			}]})
  			.then(device => device.gatt.connect())
 			.then(server => server.getPrimaryService('heart_rate'))
@@ -30,7 +31,15 @@
 					.then( /* do some processing */),
 				]);
 			})
-		.catch(error => console.log(error);
+			.catch(error => console.log(error));
+		}
+		
+		function anyDevice() {
+  				return Array.from('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+      			.map(c => ({namePrefix: c}))
+      			.concat({name: ''});
+      	}
+
 
 </script>
 </body>
