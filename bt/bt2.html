@@ -1,16 +1,37 @@
-navigator.bluetooth.requestDevice({
-  filters: [{
-    services: ['heart_rate'],
-  }]})
-  .then(device => device.gatt.connect())
-  .then(server => server.getPrimaryService('heart_rate'))
-  .then(service => {
-    chosenHeartRateService = service;
-    return Promise.all([
-      service.getCharacteristic('body_sensor_location')
-        .then( /* do some processing */),
-      service.getCharacteristic('heart_rate_measurement')
-        .then( /* do some processing */),
-    ]);
-  })
-  .catch(error => console.log(error));;
+<html>
+<head>
+	<title>demo HTML5 sensor demo(Vibrate and BT)</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-type">
+	<meta name="viewport" content="width=device-width" />
+</head>
+<body>
+	<button id="bt" onclick="bts3()" style="font-size:150%">BT search2</button>
+	
+
+	<!-- ‘‚­êŠ‚ðŽw’è‚·‚éB‚±‚±‚Íhtml -->
+	<div id="output"></div>
+
+	<script type="text/javascript">
+		var x=document.getElementById("output");
+		
+		function bts3() {
+		navigator.bluetooth.requestDevice({
+			filters: [{
+				services: ['heart_rate'],
+			}]})
+ 			.then(device => device.gatt.connect())
+			.then(server => server.getPrimaryService('heart_rate'))
+			.then(service => {
+				chosenHeartRateService = service;
+				return Promise.all([
+					service.getCharacteristic('body_sensor_location')
+					.then( /* do some processing */),
+					service.getCharacteristic('heart_rate_measurement')
+					.then( /* do some processing */),
+				]);
+			})
+		.catch(error => console.log(error));;
+
+</script>
+</body>
+</html>
