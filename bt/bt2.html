@@ -16,10 +16,10 @@
 		
 		function bts3() {
 		navigator.bluetooth.requestDevice({
-			filters: [{
+//			filters: [{
 //				services: ['heart_rate'],
-				services:  anyDevice()
-			}]})
+//			}]})
+			filters: anyDevice()})
  			.then(device => device.gatt.connect())
 			.then(server => server.getPrimaryService('heart_rate'))
 			.then(service => {
@@ -39,8 +39,6 @@
       			.map(c => ({namePrefix: c}))
       			.concat({name: ''});
       	}
-
-
 </script>
 </body>
 </html>
