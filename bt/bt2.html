@@ -1,0 +1,16 @@
+navigator.bluetooth.requestDevice({
+  filters: [{
+    services: ['heart_rate'],
+  }]})
+  .then(device => device.gatt.connect())
+  .then(server => server.getPrimaryService('heart_rate'))
+  .then(service => {
+    chosenHeartRateService = service;
+    return Promise.all([
+      service.getCharacteristic('body_sensor_location')
+        .then( /* do some processing */),
+      service.getCharacteristic('heart_rate_measurement')
+        .then( /* do some processing */),
+    ]);
+  })
+  .catch(error => console.log(error));;

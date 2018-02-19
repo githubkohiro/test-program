@@ -44,7 +44,7 @@
 		}
 
 		function bts2(){		
-			if( navigator.bluetooth.requestDevice({filters: anyDevice()}) ){
+			if( navigator.bluetooth.requestDevice({filters: anyDevice()}).catch(error => console.log("bts2.error") ){
 				x.innerHTML="bts2.finding devices";
 				console.log("bts2.finding devices");
 			} else {
